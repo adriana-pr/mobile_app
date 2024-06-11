@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
+  url:'http://localhost:8888/serverPHP' | any; 
   data:any;
   constructor(private http:HttpClient) {}
 
@@ -24,19 +24,19 @@ export class CategoriesService {
   }
 
   getCategories(token: any):Observable<Object>{
-    return this.http.post(`${environment.url}/getCategories.php`, token);
+    return this.http.post(`${this.url}/getCategories.php`, token);
   }
   insertCategory(data: any):Observable<Object>{
-    return this.http.post(`${environment.url}/insertCategory.php`, data);
+    return this.http.post(`${this.url}/insertCategory.php`, data);
   }
   getCategory(id:any){
-    return this.http.post(`${environment.url}/getCategory.php`, id);
+    return this.http.post(`${this.url}/getCategory.php`, id);
   }
   uptadeCategory(data: any){
-    return this.http.post(`${environment.url}/updateCategory.php`, data);
+    return this.http.post(`${this.url}/updateCategory.php`, data);
   }
   deleteCategory(data: any){
-    return this.http.post(`${environment.url}/deleteCategory.php`, data);
+    return this.http.post(`${this.url}/deleteCategory.php`, data);
     
   }
 }

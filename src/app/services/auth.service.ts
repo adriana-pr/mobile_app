@@ -2,13 +2,13 @@ import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import {  } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService implements CanActivate {
-
+   url:'http://localhost:8888/serverPHP' | any; 
   constructor(private router:Router,
     private http:HttpClient) { }
 
@@ -36,17 +36,17 @@ export class AuthService implements CanActivate {
     this.router.navigate(['/sign-in']);
   }
   deleteToken(token:any){
-    return this.http.post(`${environment.url}/deleteToken.php`, token);
+    return this.http.post(`${this.url}/deleteToken.php`, token);
   }
   insertUser(user: object) {
-    return this.http.post(`${environment.url}/insertUser.php`, user);
+    return this.http.post(`${this.url}/insertUser.php`, user);
 
   }
   getUser(user: object) {
-    return this.http.post(`${environment.url}/getUser.php`, user);
+    return this.http.post(`${this.url}/getUser.php`, user);
   }
 
   changePassword(user: object) {
-    return this.http.post(`${environment.url}/changePassword.php`, user);
+    return this.http.post(`${this.url}/changePassword.php`, user);
   }
 }
