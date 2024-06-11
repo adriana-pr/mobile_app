@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Мої рецепти
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-fab vertical="center" horizontal="end">
+    <ion-fab-button class="add">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <div class="list-items">
+      <ion-fab-list side="bottom">
+        <ion-item>
+          <ion-label [routerLink]="['/create-category']">Категорію</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label [routerLink]="['/create-recipe']">Рецепт</ion-label>
+        </ion-item>
+
+      </ion-fab-list>
+    </div>
+  </ion-fab>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="content" *ngIf="!message">
+    <div class="card" *ngFor="let item of categories">
+      <div class="card-content" [queryParams]="{ category: item.category_name }" [routerLink]="item.category_id" >
+        <div class="img">
+          <img src="/assets/icon/cook-book_2253457.png" alt="{{item.category_name}}">
+        </div>
+        <div class="title">
+          <p>{{item.category_name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="message" *ngIf="message">
+  <h2>{{message}}</h2>
+</div>
+</ion-content>

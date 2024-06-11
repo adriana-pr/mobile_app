@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Редагувати категорію
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/myRecipes"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="categoryForm">
+    <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+
+      <ion-item >
+        <ion-input formControlName="title" type="text" fill="solid" label="Редагувати назву категорії" labelPlacement="floating"
+        [clearInput]="true" (ionFocus)="onInputFocus()"> </ion-input>
+      </ion-item>
+
+      <ion-button shape="round" (click)="onSubmit()">Редагувати</ion-button>
+      <ion-text class="another-error" color="danger" *ngIf="errorMessage">
+        <p class="error">*{{ errorMessage }}</p>
+      </ion-text>
+    </ion-list>
+    <ion-alert [isOpen]="isAlertOpen" header="{{messageAlert}}" subHeader=""
+    message="" [buttons]="alertButtons"
+    (didDismiss)="setOpen(false)" class='alert'></ion-alert>
+  </form>
+
+</ion-content>

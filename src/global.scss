@@ -24,3 +24,110 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+body {
+  --ion-background-color: rgb(237, 237, 213);
+}
+
+.circleBase {
+  border-radius: 50%;
+}
+
+.type1 {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(90deg, rgb(202, 210, 167) 0%, rgb(202, 210, 167) 100%);
+  box-shadow: 0px 1px 10px rgba(202, 210, 167, 0.5);
+  top: -50px;
+  left: -50px;
+}
+
+.type2 {
+  width: 100px;
+  height: 100px;
+  // background: rgb(66, 86, 35)
+  background: #777D69;
+}
+
+.circle1 {
+  margin-left: 180px;
+  margin-top: 50px;
+}
+
+.circle2 {
+  position: absolute;
+  top: 150px;
+  left: -20px;
+}
+
+.welcomeMessage {
+  position: absolute;
+  top: 70px;
+  left: 50px;
+
+  ion-text {
+    color: rgb(66, 86, 35);
+    font-weight: 700;
+  }
+
+  p {
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-top: 5px;
+  }
+}
+
+.error {
+  font-size: 0.75rem;
+  margin-top: -10px;
+}
+ion-title {
+  color: rgb(66, 86, 35);
+}
+.alert {
+  --background: rgb(237, 237, 213);
+
+  .alert-wrapper {
+    .alert-head {
+      margin: 5px;
+      h2 {
+        font-weight: 800;
+        color: rgb(66, 86, 35);
+        font-size: 20px;
+      }
+  }
+  .alert-message{
+    font-weight: 600;
+    color: rgb(66, 86, 35);
+  }
+}
+}
+button.alert-button.alert-button-confirm {
+  background-color: rgb(50, 65, 27);
+  color: white;
+  padding-bottom: 10px;
+}
+button.alert-button.cancel {
+  border-right: 1px solid rgb(237, 237, 213);
+}
+
+
+ion-action-sheet.my-custom-class .action-sheet-group {
+  background: rgb(66, 86, 35);
+  text-align: center;
+}
+ion-action-sheet.my-custom-class .alert-button-delete{
+  border-top: 1px solid #777D69;
+}
+
+ion-action-sheet.my-custom-class .action-sheet-cancel::after {
+  background: rgb(66, 86, 35);
+}
+
+ion-action-sheet.my-custom-class .action-sheet-button,
+ion-action-sheet.my-custom-class .action-sheet-button.ion-focused {
+  color: #ffffff;
+}
+
+

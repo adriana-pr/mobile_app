@@ -1,0 +1,68 @@
+<ion-content [fullscreen]="true">
+  <div class="circleBase type2 circle1"></div>
+  <div class="circleBase type1"></div>
+  <div class="circleBase type2 circle2"></div>
+
+  <ion-label class="welcomeMessage">
+    <ion-text color="light"> З поверненням,</ion-text>
+    <ion-text color="white">
+      <p class="hello">Увійти!</p>
+    </ion-text>
+  </ion-label>
+
+  <form [formGroup]="form">
+    <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+      <ion-item class="ion-margin-vertical">
+        <ion-icon name="mail-outline" slot="end" color="medium">
+        </ion-icon>
+        <ion-input formControlName="email" placeholder="Введіть email"
+        (ionFocus)="onInputFocus()">
+        </ion-input>
+      </ion-item>
+      <ion-text class="ion-text-left" color="danger" *ngIf="!form.get('email')!.valid && form.get('email')!.touched">
+        <p class="error">*Введіть правильну електронну адресу</p>
+      </ion-text>
+      <ion-text class="ion-text-left" color="danger" *ngIf="errorEmail">
+        <p class="error">*{{ errorEmail }}</p>
+      </ion-text>
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon (click)="onChange()" [name]="isTypePassword ? 'lock-closed-outline' : 'lock-open-outline'" slot="end"
+          [color]="isTypePassword ? 'medium' : 'primary'">
+        </ion-icon>
+        <ion-input formControlName="password" [type]="isTypePassword ? 'password' : 'text'"
+          placeholder="Введіть пароль" (ionFocus)="onInputFocus()">
+        </ion-input>
+      </ion-item>
+      <ion-text class="ion-text-left" color="danger"
+        *ngIf="!form.get('password')!.valid && form.get('password')!.touched">
+        <p class="error" *ngIf="form.get('password')!.invalid && form.get('password')!.errors?.['required']">
+          *Введіть пароль
+        </p>
+        <p class="error" *ngIf="form.get('password')!.dirty">
+          *Пароль має бути не менше 8 символів
+        </p>
+      </ion-text>
+      <ion-text class="ion-text-left" color="danger" *ngIf="errorPassword">
+        <p class="error">*{{ errorPassword }}</p>
+      </ion-text>
+
+      <ion-row class="ion-margin-vertical change-password">
+        <ion-col>
+          <div class="change-text">
+            <ion-note routerLink="/change-password">Забули пароль?</ion-note>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-button shape="round" class="signIn-button" (click)="onSubmit()">Увійти</ion-button>
+      <ion-text class="another-error" color="danger" *ngIf="anotherError">
+        <p class="error">*{{ anotherError }}</p>
+      </ion-text>
+      <p class="signup">
+        <ion-note>
+          Немаєш акаунт? <ion-text routerLink="/sign-up">Зареєструватися</ion-text>
+        </ion-note>
+      </p>
+    </ion-list>
+  </form>
+</ion-content>

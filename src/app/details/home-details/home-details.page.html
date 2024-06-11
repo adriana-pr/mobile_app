@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title *ngIf="recipe">{{recipe.name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-icon *ngIf="menu" id="open-action-sheet-recipe" slot="end" name="ellipsis-horizontal-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="recipe">
+  <ion-action-sheet 
+  trigger="open-action-sheet-recipe"
+  class="my-custom-class"
+  [buttons]="actionSheetButtonsRecipe"
+  ></ion-action-sheet>
+
+  <ion-alert [isOpen]="isAlertOpen" header="{{messageAlert}}" subHeader=""
+    message="" [buttons]="alertButtons"
+    (didDismiss)="setOpen(false)" class='alert'></ion-alert>
+    <div class="img">
+      <img src="{{recipe.image_url}}" alt="{{recipe.name}}" (error)="replaceImageOnError(recipe)">
+    </div>
+    <div class="text-content">
+      
+      <div class="ingredients">
+        <div class="flex-container">
+          <img src="/assets/icon/ingredients.png" alt="ingredients image">
+          <h3>Інгрідієнти:</h3>
+        </div>
+        <p>{{recipe.ingredients}}</p>
+      </div>
+      <div class="preparation">
+        <div class="flex-container">
+          <img src="/assets/icon/preparation.png" alt="ingredients image">
+          <h3>Приготування:</h3>
+        </div>
+        <p>{{recipe.preparation}}</p>
+      </div>
+    </div>
+    
+</ion-content>

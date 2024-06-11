@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title *ngIf="categoryName">{{categoryName}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/myRecipes"></ion-back-button>
+    </ion-buttons>
+    <ion-icon id="open-action-sheet" slot="end" name="ellipsis-horizontal-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-action-sheet 
+  trigger="open-action-sheet"
+  class="my-custom-class"
+  [buttons]="actionSheetButtons"
+  ></ion-action-sheet>
+
+  <ion-alert [isOpen]="isAlertOpen" header="{{messageAlert}}" subHeader=""
+  message="" [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)" class='alert'></ion-alert>
+
+  <div class="content" *ngIf="!message">
+    <div class="card" *ngFor="let item of recipes">
+      <div class="card-content" [routerLink]="['/myRecipes', item.id, id]" >
+        <div class="img">
+          <img src="{{item.image_url}}" alt="{{item.name}}" (error)="replaceImageOnError(item)">
+        </div>
+        <div class="title">
+          <p>{{item.name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="message" *ngIf="message">
+  <h2>{{message}}</h2>
+</div>
+</ion-content>
+

@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Новий рецепт
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" (click)="reload()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="recipeForm">
+    <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+
+      <ion-item>
+        <ion-input formControlName="title" type="text" fill="solid" label="Назва страви" labelPlacement="floating"
+          [clearInput]="true" (ionFocus)="onInputFocus()"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="photo" type="text" fill="solid" label="Фото страви" labelPlacement="floating"
+          [clearInput]="true" (ionFocus)="onInputFocus()"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select (ionFocus)="onInputFocus()" formControlName="category" justify="space-between" label="Категорія"
+          placeholder="Категорія" interface="popover">
+          <ion-select-option *ngFor="let category of categories" [value]="category.category_id">
+            {{ category.category_name}}
+          </ion-select-option>
+        </ion-select>
+
+
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea (ionFocus)="onInputFocus()" formControlName="ingredients" label="Інгредієнти"
+          labelPlacement="floating" placeholder="Інгредієнти"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-textarea (ionFocus)="onInputFocus()" formControlName="preparation" label="Приготування"
+          labelPlacement="floating" placeholder="Приготування"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Показати іншим користувачам</ion-label>
+        <ion-checkbox slot="end" label="Мітка" legacy formControlName="show_to_others"></ion-checkbox>
+      </ion-item>
+
+      <ion-button shape="round" (click)="onSubmit()">Створити рецепт</ion-button>
+      <ion-text class="another-error" color="danger" *ngIf="errorMessage">
+        <p class="error">*{{ errorMessage }}</p>
+      </ion-text>
+    </ion-list>
+
+    <ion-alert [isOpen]="isAlertOpen" header="Рецепт успішно створено" subHeader=""
+      message="" [buttons]="alertButtons"
+      (didDismiss)="setOpen(false)" class='alert'></ion-alert>
+  </form>
+
+</ion-content>
