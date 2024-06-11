@@ -8,7 +8,7 @@ import {  } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService implements CanActivate {
-   url:'http://localhost:8888/serverPHP' | any; 
+   url = 'http://localhost:8888/serverPHP' ; 
   constructor(private router:Router,
     private http:HttpClient) { }
 

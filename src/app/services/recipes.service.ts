@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RecipesService {
-  url:'http://localhost:8888/serverPHP' | any; 
+  url = 'http://localhost:8888/serverPHP' ; 
   constructor(private http:HttpClient) {}
 
   getRecipes(token: any):Observable<Object>{

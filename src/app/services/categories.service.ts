@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoriesService {
-  url:'http://localhost:8888/serverPHP' | any; 
+  url = 'http://localhost:8888/serverPHP' ; 
   data:any;
   constructor(private http:HttpClient) {}
 
