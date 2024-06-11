@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: String
+  url: 'https://adriana-pr.github.io/mobile_app'
 };
