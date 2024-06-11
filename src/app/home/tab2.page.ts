@@ -34,7 +34,7 @@ loadRecipes(){
 }
 
   replaceImageOnError(item:any): void {
-    item.image_url = '/assets/icon/recipe_1889972.png';
+    item.image_url = 'http://localhost:8888/serverPHP/img/recipe_1889972.png';
   }
   logout(){
     this.authService.deleteToken(this.authService.getLogin()).subscribe(
